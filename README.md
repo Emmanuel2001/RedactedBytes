@@ -43,11 +43,8 @@ Get started with RedactedBytes in just a few steps!
 
 ### Using Docker  
 ```bash
-# Build the Docker image
-docker build -t redactedbytes .
-
-# Run the container
-docker run -it --rm -p 8000:8000 redactedbytes
+# Build the Docker image and run it
+docker compose up --build
 ```
 ## 🛠️ Tech Stack  
 
