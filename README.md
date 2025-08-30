@@ -43,11 +43,8 @@ Get started with RedactedBytes in just a few steps!
 
 ### Using Docker  
 ```bash
-# Build the Docker image
-docker build -t redactedbytes .
-
-# Run the container
-docker run -it --rm -p 8000:8000 redactedbytes
+# Build the Docker image and run it
+docker compose up --build
 ```
 ## 🛠️ Tech Stack  
 
@@ -64,7 +61,7 @@ docker run -it --rm -p 8000:8000 redactedbytes
 - 📷 [ZXing-CPP](https://github.com/zxing-cpp/zxing-cpp) → barcode & QR code recognition  
 
 ## 🎥 Video Demo  
-👉 *Coming soon… stay tuned!*  
+[![Video Demo](https://img.youtube.com/vi/nxJXY7xhT_s/0.jpg)](https://www.youtube.com/watch?v=nxJXY7xhT_s)
 
 ## 📚 Datasets  
 - [📑 COCO Pose Dataset (Ultralytics)](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/coco-pose.yaml)
