@@ -1,0 +1,14 @@
+.git
+.gitignore
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
+dist/
+build/
+.cache/
+.vscode/
+node_modules/
+frontend/node_modules/
+.next/

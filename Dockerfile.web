@@ -1,0 +1,20 @@
+FROM node:20-bullseye-slim
+
+WORKDIR /app
+RUN corepack enable
+
+# Pre-copy lockfiles for better layer caching
+COPY src/frontend/pnpm-lock.yaml src/frontend/package.json ./frontend/
+
+WORKDIR /app/frontend
+RUN corepack prepare pnpm@latest --activate \
+ && pnpm install --frozen-lockfile || pnpm install
+
+# Copy the rest of the frontend
+COPY src/frontend/. .
+
+EXPOSE 3000
+
+# Run Next dev server
+# If your "pnpm dev" doesn’t pass flags through, use: npx next dev -H 0.0.0.0 -p 3000
+CMD ["sh", "-c", "pnpm dev -p 3000 -H 0.0.0.0"]

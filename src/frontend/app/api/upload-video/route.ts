@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     redactionFormData.append("file", videoFile, videoFile.name);
 
     // Forward to FastAPI
-    const apiUrl = process.env.REDACTION_API_URL || "http://localhost:8000/redact-video";
+    const apiUrl = process.env.REDACTION_API_URL || "http://api:8000/redact-video";
     const redactionResponse = await fetch(apiUrl, {
       method: "POST",
       body: redactionFormData,

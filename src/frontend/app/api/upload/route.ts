@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const imageUrls = [];
     
     // Process each image individually
-    const pythonBackendUrl = process.env.PYTHON_BACKEND_URL || 'http://localhost:8000';
+    const pythonBackendUrl = process.env.PYTHON_BACKEND_URL || 'http://api:8000';
     const baseUrl = `${pythonBackendUrl}/redact`;
     console.log(`Using backend URL: ${baseUrl}`);
     

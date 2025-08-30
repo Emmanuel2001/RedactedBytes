@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: redactedbytes-api
+    environment:
+      - PYTHONUNBUFFERED=1
+    # volumes:
+    #   - ./:/app:delegated
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: redactedbytes-web
+    environment:
+      - REDACTION_API_URL=http://api:8000/redact-video
+      - HOST=0.0.0.0
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
