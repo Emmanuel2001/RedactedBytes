@@ -1,21 +1,17 @@
-FROM python:3.13.7-slim
+FROM python:3.12-slim
 
-# Build tools + runtime libs needed by OpenCV/Paddle/NumPy/Scipy
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential cmake pkg-config git \
     ffmpeg libgl1 libglib2.0-0 \
-    libgomp1 libgfortran5 \
-    libopenblas0-pthread \
-    libomp5 \
+    libgomp1 libgfortran5 libstdc++6 \
+    libopenblas0-openmp \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Improve pip reliability in containers
 ENV PIP_NO_CACHE_DIR=1 PIP_DISABLE_PIP_VERSION_CHECK=1
-
-# Reduce thread contention; avoids some OpenMP issues
 ENV OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_MAX_THREADS=1
+ENV LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1
 
 COPY requirements.txt ./requirements.txt
 RUN python -m pip install --upgrade pip \
@@ -23,8 +19,5 @@ RUN python -m pip install --upgrade pip \
 
 COPY src/backend/. .
 
-# Expose API port
 EXPOSE 8000
-
-# Start FastAPI (expects a file server.py exposing `app`)
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
