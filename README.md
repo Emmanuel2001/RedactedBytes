@@ -67,4 +67,8 @@ docker run -it --rm -p 8000:8000 redactedbytes
 👉 *Coming soon… stay tuned!*  
 
 ## 📚 Datasets  
-- [📑 COCO Pose Dataset (Ultralytics)](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/coco-pose.yaml)  
+- [📑 COCO Pose Dataset (Ultralytics)](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/coco-pose.yaml)
+
+# Citations
+
+- *Wang, A., Liu, L., Chen, H., Lin, Z., Han, J., & Ding, G.* (2025). **YOLOE: Real-Time Seeing Anything.** arXiv [Cs.CV]. [![DOI:10.48550/arXiv.2503.07465](https://zenodo.org/badge/DOI/10.48550/arXiv.2503.07465.svg)](https://doi.org/10.48550/arXiv.2503.07465)
